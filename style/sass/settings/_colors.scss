@@ -1,0 +1,20 @@
+// Base colours -- use chir.ag/projects/name-that-color/ to get names
+// See https://davidwalsh.name/sass-color-variables-dont-suck for reasons
+// Greys
+$mercury: #e2e2e2;
+$tundora: #444;
+
+// Blues
+$picton-blue: #499eed;
+
+// Colour mapping
+$body__bg-color: $mercury;
+
+$header__bg-color: $picton-blue;
+$header__link-color: $mercury;
+
+$hr__color: $mercury;
+$link__color: $picton-blue;
+
+$footer__link-color: $mercury;
+$footer__bg-color: $tundora;

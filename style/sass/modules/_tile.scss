@@ -1,0 +1,15 @@
+.tile {
+	@extend %inset;
+
+	background-color: white;
+	box-shadow: 0 0.3rem 0 rgba(black, 0.2);
+
+}
+
+.tile__title {
+	padding-bottom: map-get($grid-margins, s) / 2;
+	border-bottom: 0.1rem solid #ccc;
+
+	@include mq($from: m) { padding-bottom: map-get($grid-margins, m) / 2; }
+	@include mq($from: l) { padding-bottom: map-get($grid-margins, l) / 2; }
+}

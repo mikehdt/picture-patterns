@@ -1,0 +1,35 @@
+.image {
+	text-align: center;
+}
+
+.img-640 {
+	max-width: 64rem;
+}
+
+.img-full {
+	width: 100%;
+	max-width: inherit;
+}
+
+.code {
+	text-align: left;
+}
+
+.m-1 { background-color: #cef; }
+.m-2 { background-color: #fcc; }
+.m-3 { background-color: #cfa; }
+.m-4 { background-color: #ff9; }
+.m-5 { background-color: #afe; }
+.m-6 { background-color: #eaf; }
+
+.browsers {
+	font-size: 0.9em;
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin-top: 0;
+	}
+}

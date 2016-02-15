@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>&lt;img&gt; srcset -w syntax &ndash; &lt;picture&gt; patterns</title>
+<link href="/style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
+		<p>
+	</div>
+</header>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax only</h2>
+
+				<p><code>-w</code> syntax instructs the browser to load a different image based on the reported density of the screen display, combined with some ahead-of-time knowledge about what size the image will be displayed at. The number in front of the <code>w</code> should be the exact pixel width of that particular image file.</p>
+
+				<p>If you do not need the complexity of the full <code>&lt;picture&gt;</code> syntax, this will allow you to have images which semi-intelligently pick the right image to load for the given display size. This includes calculations internally about the display PPI and browser width.</p>
+
+				<p>It is important to note that the caching of images here is permissive. If the browser has already loaded a larger image, such as from a window resize, it will hold on to that image even if a closer matching source would suffice and even if a more closely matching source has already been cached.</p>
+
+				<p>The main addition compared to the <code>-x</code> syntax is the addition of the (mandatory for <code>-w</code> syntax use) <code>sizes</code> attribute. This contains a list, in descending order, of sizes of how the image will be displayed. Media queries are paired here with each size to match how the image is intended to be displayed. However, the last item &ndash; or if there is only one size &ndash; does not need to specify a media query.</p>
+
+				<p>Some people feel that having media queries in the HTML is uncomfortable. However, the queries are required in the HTML attribute so that the browser can pick the best image source without needing to first load and parse a CSS document.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-1280.png <mark class="m-1">1280w</mark>,
+					             img-960.png   <mark class="m-2">960w</mark>,
+					             img-640.png   <mark class="m-3">640w</mark>,
+					             img-480.png   <mark class="m-4">480w</mark>&quot;
+					     sizes=&quot;480px&quot;&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<img src="img-320.png"
+	     srcset="img-1280.png 1280w,
+	             img-960.png   960w,
+	             img-640.png   640w,
+	             img-480.png   480w"
+	     sizes="480px">
+</p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Full width example</h2>
+
+				<p>The following example will likely have messed with the chosen image above, due to the same source images being available for the browser to choose from. Here, the browser is instructed that it will display edge-to-edge, or <code>100vw</code>.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-1280.png <mark class="m-1">1280w</mark>,
+					             img-960.png   <mark class="m-2">960w</mark>,
+					             img-640.png   <mark class="m-3">640w</mark>,
+					             img-480.png   <mark class="m-4">480w</mark>,
+					             img-320.png   <mark class="m-5">320w</mark>&quot;
+					     sizes=&quot;100vw&quot;&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<img src="img-320.png"
+	     srcset="img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
+	     sizes="100vw"
+	     class="img-full">
+</p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Browser support</h2>
+				<p>Coming soon</p>
+			</div>
+		</div>
+	</div>
+
+	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a></p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

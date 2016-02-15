@@ -1,0 +1,17 @@
+.footer {
+	margin-top: 4em;
+	font-size: 0.8em;
+	border-top: 0.2rem solid white;
+	background-color: $footer__bg-color;
+	color: white;
+	text-align: center;
+
+	a {
+		color: $footer__link-color;
+
+		&:hover, &:focus {
+			background-color: $footer__link-color;
+			color: black;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "frontend-stub",
+  "version": "1.0.0",
+  "description": "Front end stub. Edit project.json for project settings and for great justice.",
+  "author": "mike@dthought.net",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "latest",
+    "gulp-cssnano": "latest",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-uglify": "latest"
+  }
+}

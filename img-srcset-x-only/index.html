@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>&lt;img&gt; srcset -x syntax &ndash; &lt;picture&gt; patterns</title>
+<link href="/style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
+		<p>
+	</div>
+</header>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -x</code> syntax only</h2>
+
+				<p><code>-x</code> syntax instructs the browser to load a different image based on the reported density of the screen display.</p>
+
+				<p>This was the first and is the simplest way of achieving &ldquo;high resolution&rdquo; images in HTML. However, its use is severely limited. It only makes sense to use on images with a <code>fixed resolution</code> as it does not take into consideration image display size.</p>
+
+				<p>If you have loaded the <code>2&times;</code> image on a high-PPI screen or through PPI emulation, it will be used in preference of the <code>1&times;</code> image. This is true even if you then revert to displaying it on a low-PPI screen. It is also true even if both sizes have been cached &ndash; the larger one prevails. The only way to reset this is to clear the browser cache.</p>
+
+				<p>Certain browsers, will load a high-PPI image if you zoom the page using the browser page zoom controls. Depending on the browser, you may need to zoom and then refresh the page to observe this behaviour.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-640.png  <mark class="m-1">1x</mark>,
+					             img-1280.png <mark class="m-2">2x</mark>&quot;&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<img src="img-320.png"
+	     srcset="img-640.png  1x,
+	             img-1280.png 2x"
+	     class="img-640">
+</p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Full width example</h2>
+
+				<p>To reiterate the point above, note that this image below is set to <code>100%</code> width. On larger screens, you can observe that the image is scaled up. However the <code>2&times;</code> image does not load unless the screen is also identified as high-PPI.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<img src="img-320.png"
+	     srcset="img-640.png  1x,
+	             img-1280.png 2x"
+	     class="img-full">
+</p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Browser support</h2>
+				<dl class="browsers">
+					<dt>Chrome 46</dt>
+					<dd>Works. Zoom will use retina after a refresh.</dd>
+					<dt>Firefox 42</dt>
+					<dd>Works. Zoom will use retina after a refresh but will also erroneously move stuff around.</dd>
+					<dt>Safari 9</dt>
+					<dd>Works. Zoom does nothing.</dd>
+					<dt>Edge 12</dt>
+					<dd>Works. Zoom will use retina after a refresh.</dd>
+					<dt>Edge 13</dt>
+					<dd>Works. Zoom will use retina after a refresh.</dd>
+					<dt>Android Chrome 44</dt>
+					<dd>Works.</dd>
+					<dt>iOS Safari 9</dd>
+					<dd>Works.</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a></p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

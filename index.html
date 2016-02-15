@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>&lt;picture&gt; patterns</title>
+<link href="/style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header  header--home">
+	<div class="container">
+		<h1><code>&lt;picture&gt;</code> patterns</h1>
+	</div>
+</header>
+
+<main class="container">
+	<div class="intro">
+		<p>A collection of code patterns and demonstrations using <code>srcset</code> combined with the <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code>&nbsp;elements</p>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title">The basics</h2>
+				<p>Coming soon&hellip; just know for now that the <code>&lt;picture&gt;</code> element is a fussy and inconsistently implemented beast, and that the awesome <a href="https://github.com/scottjehl/picturefill">Picturefill</a> makes things bearable. Note that Picturefill is not used with any of the examples yet (it will be available as an option in a later revision), so you are at the mercy of your current browser&hellip;</p>
+				<p>This project is a work in progress. More examples and resources will be added soon.</p>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -x</code></h2>
+				<dl>
+					<dt><a href="/img-srcset-x-only/"><code>&lt;img&gt;</code> with <code>srcset -x</code> syntax</a></dt>
+					<dd><strong>Use:</strong> swap out high res art by screen density only</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code></h2>
+				<dl>
+					<dt><a href="/img-srcset-w-only/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, one size</a></dt>
+					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
+
+					<dt><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, multiple sizes</dt>
+					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
+
+					<dt><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</dt>
+					<dd><strong>Use:</strong> test browser handling of incomplete <code>-w</code> syntax</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -x</code></h2>
+				<dl>
+					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-x</code> syntax</dt>
+					<dd><strong>Use:</strong> Force different sources with high density support</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -w</code></h2>
+				<dl>
+					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-w</code> syntax</dt>
+					<dd><strong>Use:</strong> Supposedly more intelligent source choice.</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>source</code></h2>
+				<dl>
+					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> format types</dt>
+					<dd><strong>Use:</strong> Provide better formats for supported browsers with a fallback for others</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex use cases</h2>
+				<dl>
+					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code>, <code>sizes</code>, <code>-w</code> and <code>-x</code> syntax</dt>
+					<dd><strong>Use:</strong> Art direction across different sizes.</dd>
+
+					<dt>Complex <code>&lt;picture&gt;</code> example with explicit caching</dt>
+					<dd><strong>Use:</strong> Image changes size and care about scaling</dd>
+
+					<dt>Complex <code>&lt;picture&gt;</code> example with permissive caching</dt>
+					<dd><strong>Use:</strong> Image changes size and don&rsquo;t care about scaling</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title">Further Resources</h2>
+				<ul>
+					<li><a href="http://w3c.github.io/html/semantics.html#the-picture-element">Official W3C <code>&lt;picture&gt;</code> specification</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN <code>&lt;picture&gt;</code> specification and examples</a></li>
+					<li><a href="http://caniuse.com/#feat=srcset">Can I Use <code>&lt;picture&gt;</code> support</a></li>
+					<li><a href="http://caniuse.com/#feat=picture">Can I Use <code>srcset</code> support</a></li>
+					<li><a href="https://github.com/scottjehl/picturefill">Picturefill <code>&lt;picture&gt;</code> and <code>srcset</code> polyfill</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col  col-1  col-1-2--s">
+			<div class="tile">
+				<h2 class="tile__title">Further Reading</h2>
+				<ul>
+					<li>Coming soon&hellip;</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a> &ndash; because project without heart aren&rsquo;t worth using amirite?</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+</body>
+</html>

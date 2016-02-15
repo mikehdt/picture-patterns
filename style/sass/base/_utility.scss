@@ -1,0 +1,43 @@
+%inset {
+	padding: map-get($grid-margins, s) / 2;
+
+	@include mq($from: m) { padding: map-get($grid-margins, m) / 2; }
+	@include mq($from: l) { padding: map-get($grid-margins, l) / 2; }
+}
+
+%inset-l {
+	padding: map-get($grid-margins, s);
+
+	@include mq($from: m) { padding: map-get($grid-margins, m); }
+	@include mq($from: l) { padding: map-get($grid-margins, l); }
+}
+
+%inset-sides-l {
+	padding-left:  map-get($grid-margins, s);
+	padding-right: map-get($grid-margins, s);
+
+	@include mq($from: m) {
+		padding-left:  map-get($grid-margins, m);
+		padding-right: map-get($grid-margins, m);
+	}
+
+	@include mq($from: l) {
+		padding-left:  map-get($grid-margins, l);
+		padding-right: map-get($grid-margins, l);
+	}
+}
+
+%inset-edges-l {
+	padding-top:    map-get($grid-margins, s);
+	padding-bottom: map-get($grid-margins, s);
+
+	@include mq($from: m) {
+		padding-top:    map-get($grid-margins, m);
+		padding-bottom: map-get($grid-margins, m);
+	}
+
+	@include mq($from: l) {
+		padding-top:    map-get($grid-margins, l);
+		padding-bottom: map-get($grid-margins, l);
+	}
+}
