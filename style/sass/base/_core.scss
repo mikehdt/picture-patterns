@@ -75,6 +75,7 @@ a {
 	text-decoration: none;
 	color: $link__color;
 	transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+	vertical-align: top;
 
 	&:hover, &:focus {
 		transition: color ease-in-out 0.1s, background-color ease-in-out 0.1s;
@@ -96,6 +97,13 @@ dt {
 
 dd {
 	margin-top: 0.8rem;
+}
+
+// Lists
+li {
+	margin-top: 0.4rem;
+
+	&:first-child { margin-top: 0; }
 }
 
 // Code

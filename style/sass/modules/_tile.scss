@@ -1,6 +1,7 @@
 .tile {
 	@extend %inset;
 
+	width: 100%;
 	background-color: white;
 	box-shadow: 0 0.3rem 0 rgba(black, 0.2);
 

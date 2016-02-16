@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>&lt;img&gt; srcset -w syntax &ndash; &lt;picture&gt; patterns</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;img&gt; srcset -w syntax, one size &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -10,7 +11,6 @@
 <header class="header">
 	<div class="container">
 		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
-		<p>
 	</div>
 </header>
 
@@ -18,9 +18,11 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax only</h2>
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, one size</h2>
 
 				<p><code>-w</code> syntax instructs the browser to load a different image based on the reported density of the screen display, combined with some ahead-of-time knowledge about what size the image will be displayed at. The number in front of the <code>w</code> should be the exact pixel width of that particular image file.</p>
+
+				<p>When using <code>-w</code> syntax you absolutely must also include a <code>sizes</code> attribute, even if it only has one value in it. This is a requirement of the spec. In another example, you can observe weird browser behaviour when it is left out.</p>
 
 				<p>If you do not need the complexity of the full <code>&lt;picture&gt;</code> syntax, this will allow you to have images which semi-intelligently pick the right image to load for the given display size. This includes calculations internally about the display PPI and browser width.</p>
 

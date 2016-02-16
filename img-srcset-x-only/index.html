@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>&lt;img&gt; srcset -x syntax &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
@@ -24,7 +25,7 @@
 
 				<p>This was the first and is the simplest way of achieving &ldquo;high resolution&rdquo; images in HTML. However, its use is severely limited. It only makes sense to use on images with a <code>fixed resolution</code> as it does not take into consideration image display size.</p>
 
-				<p>If you have loaded the <code>2&times;</code> image on a high-PPI screen or through PPI emulation, it will be used in preference of the <code>1&times;</code> image. This is true even if you then revert to displaying it on a low-PPI screen. It is also true even if both sizes have been cached &ndash; the larger one prevails. The only way to reset this is to clear the browser cache.</p>
+				<p>If you have loaded the 2&times; image on a high-PPI screen or through PPI emulation, depending on browser it will be used in preference of the 1&times; image. This is true even if you then revert to displaying it on a low-PPI screen. It is also true even if both sizes have been cached &ndash; the larger one prevails. The only way to reset this is to clear the browser cache.</p>
 
 				<p>Certain browsers, will load a high-PPI image if you zoom the page using the browser page zoom controls. Depending on the browser, you may need to zoom and then refresh the page to observe this behaviour.</p>
 			</div>
@@ -59,7 +60,21 @@
 			<div class="tile">
 				<h2 class="tile__title">Full width example</h2>
 
-				<p>To reiterate the point above, note that this image below is set to <code>100%</code> width. On larger screens, you can observe that the image is scaled up. However the <code>2&times;</code> image does not load unless the screen is also identified as high-PPI.</p>
+				<p>To reiterate the point above, note that this image below uses the image code but is set to <code>100%</code> width. On larger screens, you can observe that the same image has loaded as above. As above the 2&times; image does not load unless the screen is also identified as high-PPI. Once it has been loaded it will be used regardless of density.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-640.png  <mark class="m-1">1x</mark>,
+					             img-1280.png <mark class="m-2">2x</mark>&quot;&gt;
+				</code></pre>
 			</div>
 		</div>
 	</div>
@@ -78,20 +93,18 @@
 			<div class="tile">
 				<h2 class="tile__title">Browser support</h2>
 				<dl class="browsers">
-					<dt>Chrome 46</dt>
-					<dd>Works. Zoom will use retina after a refresh.</dd>
-					<dt>Firefox 42</dt>
-					<dd>Works. Zoom will use retina after a refresh but will also erroneously move stuff around.</dd>
-					<dt>Safari 9</dt>
-					<dd>Works. Zoom does nothing.</dd>
-					<dt>Edge 12</dt>
-					<dd>Works. Zoom will use retina after a refresh.</dd>
-					<dt>Edge 13</dt>
-					<dd>Works. Zoom will use retina after a refresh.</dd>
-					<dt>Android Chrome 44</dt>
-					<dd>Works.</dd>
-					<dt>iOS Safari 9</dd>
-					<dd>Works.</dd>
+					<dt>Chrome 46 &ndash; works</dt>
+					<dd>Zoom will use retina after a refresh.</dd>
+					<dt>Firefox 42 &ndash; works</dt>
+					<dd>Zoom will use retina after a refresh but will also erroneously move stuff around.</dd>
+					<dt>Safari 9 &ndash; works</dt>
+					<dd>Zoom does nothing.</dd>
+					<dt>Edge 12 &ndash; works</dt>
+					<dd>Zoom will use retina after a refresh.</dd>
+					<dt>Edge 13 &ndash; works</dt>
+					<dd>Zoom will use retina after a refresh.</dd>
+					<dt>Android Chrome 44 &ndash; works</dt>
+					<dt>iOS Safari 9 &ndash; works</dd>
 				</dl>
 			</div>
 		</div>

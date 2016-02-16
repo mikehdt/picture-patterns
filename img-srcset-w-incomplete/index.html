@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;img&gt; srcset -w syntax, no source attribute &ndash; &lt;picture&gt; patterns</title>
+<link href="../style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
+	</div>
+</header>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</h2>
+
+				<p>By deliberately leaving off the otherwise requires <code>sources</code> attribute, we often get some weird browser behaviour. You should not leave off the <code>sources</code> attribute, this is just to provide a counterpoint as to why it is needed.</p>
+
+				<p>The first image has the <code>320w</code> but is still missing <code>sizes</code>.</p>
+				<p>The second image leaves off the <code>320w</code> and is missing the <code>sizes</code> attribute.</p>
+				<p>The third image uses <code>-x</code> syntax as some weird behaviours can occur when both syntax types are on the same page.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
+					             img-1280.png <mark class="m-2">1280w</mark>,
+					             img-960.png   <mark class="m-3">960w</mark>,
+					             img-640.png   <mark class="m-4">640w</mark>,
+					             img-480.png   <mark class="m-5">480w</mark>,
+					             img-320.png   <mark class="m-6">320w</mark>&quot;&gt;
+
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
+					             img-1280.png <mark class="m-2">1280w</mark>,
+					             img-960.png   <mark class="m-3">960w</mark>,
+					             img-640.png   <mark class="m-4">640w</mark>,
+					             img-480.png   <mark class="m-5">480w</mark>,
+					             img-320.png&quot;&gt;
+
+					&lt;img src=&quot;img-320.png&quot;
+					     srcset=&quot;img-320.png <mark class="m-1">1x</mark>,
+					             img-640.png <mark class="m-2">2x</mark>&quot;&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="grid  grid--center  grid--no-gutter">
+	<div class="col  col-1">
+		<p class="image">
+			<img src="img-320.png"
+			     srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
+			     class="img-full">
+		</p>
+
+		<p class="image">
+			<img src="img-320.png"
+			     srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png"
+			     class="img-full">
+		</p>
+
+		<p class="image">
+			<img src="img-320.png"
+			     srcset="img-320.png 1x, img-640.png 2x"
+			     class="img-full">
+		</p>
+	</div>
+</div>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Browser support</h2>
+				<p>Coming soon</p>
+			</div>
+		</div>
+	</div>
+
+	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a></p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;picture&gt; with &lt;source&gt; format types &ndash; &lt;picture&gt; patterns</title>
+<link href="../style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
+	</div>
+</header>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> format types</h2>
+
+				<p>A nifty trick of the <code>&lt;picture&gt;</code> element is the ability to swap out source types. Here we use an SVG that, were the browser not knowledgeable in how to render SVGs, would not render and instead fall back to the png images.</p>
+				<p>Note that the SVG colours are a bit unusual compared to the other images as certain blending modes were used in the original source which are not supported in SVG. This is in no way a reflection of the <code>&lt;picture&gt;</code> element behaviour.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;picture&gt;
+					    &lt;source srcset=&quot;img.svg&quot;     type=&quot;<mark class="m-1">image/svg+xml</mark>&quot;&gt;
+					    &lt;source srcset=&quot;img-640.png&quot; type=&quot;<mark class="m-2">image/png</mark>&quot;&gt;
+					    &lt;img src=&quot;img-320.png&quot;&gt;
+					&lt;/picture&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<picture>
+		<source srcset="img.svg"     type="image/svg+xml">
+		<source srcset="img-640.png" type="image/png">
+		<img src="img-320.png" class="img-full">
+	</picture>
+</p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Browser support</h2>
+				<p>Coming soon</p>
+			</div>
+		</div>
+	</div>
+
+	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a></p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

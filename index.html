@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>&lt;picture&gt; patterns</title>
 <link href="./style/css/main.css" rel="stylesheet" type="text/css">
 </head>
@@ -15,7 +16,7 @@
 
 <main class="container">
 	<div class="intro">
-		<p>A collection of code patterns and demonstrations using <code>srcset</code> combined with the <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code>&nbsp;elements</p>
+		<p>A collection of code patterns and demonstrations using <code>srcset</code> combined with the HTML <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code>&nbsp;elements</p>
 	</div>
 
 	<div class="grid  grid--center">
@@ -48,10 +49,10 @@
 					<dt><a href="img-srcset-w-only/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, one size</a></dt>
 					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
 
-					<dt><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, multiple sizes</dt>
+					<dt><a href="img-srcset-w-multiple/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, multiple sizes</a></dt>
 					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
 
-					<dt><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</dt>
+					<dt><a href="img-srcset-w-incomplete/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</a></dt>
 					<dd><strong>Use:</strong> test browser handling of incomplete <code>-w</code> syntax</dd>
 				</dl>
 			</div>
@@ -61,7 +62,7 @@
 			<div class="tile">
 				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -x</code></h2>
 				<dl>
-					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-x</code> syntax</dt>
+					<dt><a href="picture-srcset-x/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-x</code> syntax</a></dt>
 					<dd><strong>Use:</strong> Force different sources with high density support</dd>
 				</dl>
 			</div>
@@ -71,7 +72,7 @@
 			<div class="tile">
 				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -w</code></h2>
 				<dl>
-					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-w</code> syntax</dt>
+					<dt><a href="picture-srcset-w/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-w</code> syntax</a></dt>
 					<dd><strong>Use:</strong> Supposedly more intelligent source choice.</dd>
 				</dl>
 			</div>
@@ -81,7 +82,7 @@
 			<div class="tile">
 				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>source</code></h2>
 				<dl>
-					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> format types</dt>
+					<dt><a href="picture-source-type/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> format types</a></dt>
 					<dd><strong>Use:</strong> Provide better formats for supported browsers with a fallback for others</dd>
 				</dl>
 			</div>
@@ -89,16 +90,16 @@
 
 		<div class="col  col-1  col-1-2--s">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex use cases</h2>
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with art direction</h2>
 				<dl>
-					<dt><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code>, <code>sizes</code>, <code>-w</code> and <code>-x</code> syntax</dt>
-					<dd><strong>Use:</strong> Art direction across different sizes.</dd>
+					<dt><a href="picture-simple-art-direction/"><code>&lt;picture&gt;</code> with simple art direction <code>&lt;source&gt;</code> changing</a></dt>
+					<dd><strong>Use:</strong> Simple art direction, mix of caching</dd>
 
-					<dt>Complex <code>&lt;picture&gt;</code> example with explicit caching</dt>
-					<dd><strong>Use:</strong> Image changes size and care about scaling</dd>
+					<dt><code>&lt;picture&gt;</code> with complex art direction and <code>-x</code> syntax</dt>
+					<dd><strong>Use:</strong> Complex art direction, explicit caching</dd>
 
-					<dt>Complex <code>&lt;picture&gt;</code> example with permissive caching</dt>
-					<dd><strong>Use:</strong> Image changes size and don&rsquo;t care about scaling</dd>
+					<dt><code>&lt;picture&gt;</code> with complex art direction and <code>-w</code> syntax</dt>
+					<dd><strong>Use:</strong> Complex art direction, permissive caching</dd>
 				</dl>
 			</div>
 		</div>
@@ -113,6 +114,7 @@
 				<ul>
 					<li><a href="http://w3c.github.io/html/semantics.html#the-picture-element">Official W3C <code>&lt;picture&gt;</code> specification</a></li>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN <code>&lt;picture&gt;</code> specification and examples</a></li>
+					<li><a href="https://responsiveimages.org/">RICG homepage</a></li>
 					<li><a href="http://caniuse.com/#feat=srcset">Can I Use <code>&lt;picture&gt;</code> support</a></li>
 					<li><a href="http://caniuse.com/#feat=picture">Can I Use <code>srcset</code> support</a></li>
 					<li><a href="https://github.com/scottjehl/picturefill">Picturefill <code>&lt;picture&gt;</code> and <code>srcset</code> polyfill</a></li>
@@ -124,7 +126,9 @@
 			<div class="tile">
 				<h2 class="tile__title">Further Reading</h2>
 				<ul>
-					<li>Coming soon&hellip;</li>
+					<li><a href="https://ericportis.com/posts/2014/srcset-sizes/">srcset and sizes &ndash; Eric Portis</a></li>
+					<li><a href="https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/">Responsive images done right &ndash; Eric Portis on Smashing Magazine</a></li>
+					<li><a href="http://webdesign.tutsplus.com/tutorials/quick-tip-how-to-use-html5-picture-for-responsive-images--cms-21015">Tutsplus quick tips</a></li>
 				</ul>
 			</div>
 		</div>
@@ -134,7 +138,7 @@
 <footer class="footer">
 	<div class="container">
 		<div class="inset">
-			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a> &ndash; because project without heart aren&rsquo;t worth using amirite?</p>
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a> &ndash; because projects without heart aren&rsquo;t worth using amirite?</p>
 		</div>
 	</div>
 </footer>

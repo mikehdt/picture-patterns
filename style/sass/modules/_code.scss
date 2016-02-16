@@ -2,6 +2,15 @@
 	text-align: center;
 }
 
+.img-170 {
+	@include mq($until: m) {
+		// Square image used in simple art direction example
+		width: auto;
+		max-width: inherit;
+		height: 17rem;
+	}
+}
+
 .img-640 {
 	max-width: 64rem;
 }

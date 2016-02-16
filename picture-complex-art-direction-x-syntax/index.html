@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;picture&gt; with complex art direction and -x syntax &ndash; &lt;picture&gt; patterns</title>
+<link href="../style/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<h1><a href="../"><code>&lt;picture&gt;</code> patterns</a></h1>
+	</div>
+</header>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex art direction and <code>-x</code> syntax</h2>
+
+				<p>A real world example. Description TBC.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					<strong>Hero:</strong>
+					&lt;picture&gt;
+					    &lt;source media=&quot;(min-width: 80em)&quot;
+					            srcset=&quot;img-hero-l.jpg?em=80  <mark class="m-1">1x</mark>,
+					                    img-hero-xl.jpg?em=80 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 40em)&quot;
+					            srcset=&quot;img-hero-m.jpg?em=40 <mark class="m-1">1x</mark>,
+					                    img-hero-l.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 20em)&quot;
+					            srcset=&quot;img-hero-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					                    img-hero-m.jpg?em=20 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;img src=&quot;img-hero-m.jpg&quot;
+					         srcset=&quot;img-hero-m.jpg <mark class="m-1">1x</mark>,
+					                 img-hero-l.jpg <mark class="m-2">2x</mark>&quot;&gt;
+					&lt;/picture&gt;
+
+					<strong>Rectangular block:</strong>
+					&lt;picture&gt;
+					    &lt;source media=&quot;(min-width: 80em)&quot;
+					            srcset=&quot;img-re-s.jpg?em=80 <mark class="m-1">1x</mark>,
+					                    img-re-m.jpg?em=80 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 60em)&quot;
+					            srcset=&quot;img-re-m.jpg?em=60 <mark class="m-1">1x</mark>,
+					                    img-re-l.jpg?em=60 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 40em)&quot;
+					            srcset=&quot;img-re-s.jpg?em=40 <mark class="m-1">1x</mark>,
+					                    img-re-m.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 30em)&quot;
+					            srcset=&quot;img-re-m.jpg?em=30 <mark class="m-1">1x</mark>,
+					                    img-re-l.jpg?em=30 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;(min-width: 20em)&quot;
+					            srcset=&quot;img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;img src=&quot;img-re-m.jpg&quot;
+					         srcset=&quot;img-re-m.jpg <mark class="m-1">1x</mark>,
+					                 img-re-l.jpg <mark class="m-2">2x</mark>&quot;&gt;
+					&lt;/picture&gt;
+
+					<strong>Square block:</strong>
+					&lt;picture&gt;
+					    &lt;source media="(min-width: 80em)"
+					            srcset="img-sq-s.jpg?em=80 <mark class="m-1">1x</mark>,
+					                    img-sq-m.jpg?em=80 <mark class="m-2">2x</mark>"&gt;
+					    &lt;source media="(min-width: 60em)"
+					            srcset="img-sq-m.jpg?em=60 <mark class="m-1">1x</mark>,
+					                    img-sq-l.jpg?em=60 <mark class="m-2">2x</mark>"&gt;
+					    &lt;source media="(min-width: 40em)"
+					            srcset="img-sq-s.jpg?em=40 <mark class="m-1">1x</mark>,
+					                    img-sq-m.jpg?em=40 <mark class="m-2">2x</mark>"&gt;
+					    &lt;source media="(min-width: 30em)"
+					            srcset="img-sq-m.jpg?em=30 <mark class="m-1">1x</mark>,
+					                    img-sq-l.jpg?em=30 <mark class="m-2">2x</mark>"&gt;
+					    &lt;source media="(min-width: 20em)"
+					            srcset="img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>"&gt;
+					    &lt;img src="img-sq-m.jpg"
+					         srcset="img-sq-m.jpg <mark class="m-1">1x</mark>,
+					                 img-sq-l.jpg <mark class="m-2">2x</mark>"&gt;
+					&lt;/picture&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="grid  grid--center">
+	<div class="col  col-1">
+		<p class="image">
+
+		</p>
+	</div>
+</div>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h2 class="tile__title">Browser support</h2>
+				<p>Coming soon</p>
+			</div>
+		</div>
+	</div>
+
+	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="inset">
+			<p>Made with &#9829; by <a href="https://twitter.com/mikehdt">@mikehdt</a></p>
+		</div>
+	</div>
+</footer>
+
+<script>
+WebFontConfig = {
+google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+};
+(function(){
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<script src="../js/prism.js"></script>
+</body>
+</html>
