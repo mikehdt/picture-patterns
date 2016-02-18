@@ -20,7 +20,15 @@
 			<div class="tile">
 				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex art direction and <code>-x</code> syntax</h2>
 
-				<p>A real world example. Description TBC.</p>
+				<p>Here we have three types of images. A hero, a rectangular image and a square image. At smallest size, all images &ndash; even the square &ndash; are presented as rectangles. This necessitates forcing source selection at sizes, aka art direction. It may also, for reasons of visual quality, be desirable to ensure the best fitting image.</p>
+
+				<p>For reasons of avoiding caching issues, <code>?em=xx</code> queries are used to make each size &ldquo;unique&rdquo;.</p>
+
+				<p>Further adding complexity is a fixed sidebar at larger sizes, which the images need to adapt to. To keep gutters simple, they are set to <code>3vw</code> at all sizes. It is likely in a true real-world scenario that this value would change (eg. capping at the lower and upper bounds). The sidebar affects the hero and other images as well, resulting in the rather lengthy <code>source</code> list for each.</p>
+
+				<p>It is also likely that, unles in exceptional circumstance, you would want to consider automating generation of the <code>&lt;picture&gt;</code> tags and related scaled images.</p>
+
+				<p>Using the <code>-x</code> syntax and <code>&lt;source&gt;</code> tags ensures that an appropriate image is chosen for each breakpoint. The last <code>&lt;source&gt;</code> does not have a media query specified, to handle all remaining small size displays.</p>
 			</div>
 		</div>
 	</div>
@@ -39,8 +47,7 @@
 					    &lt;source media=&quot;(min-width: 40em)&quot;
 					            srcset=&quot;img-hero-m.jpg?em=40 <mark class="m-1">1x</mark>,
 					                    img-hero-l.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20em)&quot;
-					            srcset=&quot;img-hero-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					    &lt;source srcset=&quot;img-hero-s.jpg?em=20 <mark class="m-1">1x</mark>,
 					                    img-hero-m.jpg?em=20 <mark class="m-2">2x</mark>&quot;&gt;
 					    &lt;img src=&quot;img-hero-m.jpg&quot;
 					         srcset=&quot;img-hero-m.jpg <mark class="m-1">1x</mark>,
@@ -61,8 +68,7 @@
 					    &lt;source media=&quot;(min-width: 30em)&quot;
 					            srcset=&quot;img-re-m.jpg?em=30 <mark class="m-1">1x</mark>,
 					                    img-re-l.jpg?em=30 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20em)&quot;
-					            srcset=&quot;img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					    &lt;source srcset=&quot;img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
 					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>&quot;&gt;
 					    &lt;img src=&quot;img-re-m.jpg&quot;
 					         srcset=&quot;img-re-m.jpg <mark class="m-1">1x</mark>,
@@ -83,8 +89,7 @@
 					    &lt;source media="(min-width: 30em)"
 					            srcset="img-sq-m.jpg?em=30 <mark class="m-1">1x</mark>,
 					                    img-sq-l.jpg?em=30 <mark class="m-2">2x</mark>"&gt;
-					    &lt;source media="(min-width: 20em)"
-					            srcset="img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					    &lt;source srcset="img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
 					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>"&gt;
 					    &lt;img src="img-sq-m.jpg"
 					         srcset="img-sq-m.jpg <mark class="m-1">1x</mark>,
@@ -96,11 +101,188 @@
 	</div>
 </div>
 
-<div class="grid  grid--center">
-	<div class="col  col-1">
-		<p class="image">
+<div class="complex-grid  complex-grid--capped">
+	<div class="complex-sidebar">
+		<div class="inset">
+			<h2>Sidebar</h2>
+			<p>Fixed width sidebar</p>
+		</div>
+	</div>
 
-		</p>
+	<!-- Explicit matching -->
+	<div class="complex-content">
+		<div class="complex-grid  complex-grid--center  complex-col-1">
+			<div class="complex-col  complex-col-1">
+				<!-- Image with fallback behaviour -->
+				<!-- The ?em=x tag is to stop browsers from using a larger 1x source as a smaller 2x source -->
+				<picture>
+					<source media="(min-width: 80em)"
+					        srcset="hero-l.jpg?em=80 1x,
+					                hero-xl.jpg?em=80 2x">
+					<source media="(min-width: 40em)"
+					        srcset="hero-m.jpg?em=40 1x,
+					                hero-l.jpg?em=40 2x">
+					<source media="(min-width: 20em)"
+					        srcset="hero-s.jpg?em=20 1x,
+					                hero-m.jpg?em=20 2x">
+					<img src="hero-m.jpg"
+					     srcset="hero-m.jpg 1x,
+					             hero-l.jpg 2x"
+					     class="img-full">
+				</picture>
+				<p class="complex-picture-title  complex-picture-title--hero"><strong>Hero Image</strong></p>
+			</div>
+		</div>
+
+		<!-- Order of srcet does not seem to matter, but I put 1x first. -->
+		<!-- The img tag has a fallback srcset for compatibility; this is not strictly necessary -->
+		<div class="complex-container">
+			<div class="complex-grid  complex-grid--center  complex-grid--guttered">
+				<div class="complex-col  complex-col-1  complex-col-1-2--m  complex-col-1--l  complex-col-1-2--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-re-s.jpg?em=80 1x,
+						                img-re-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-re-m.jpg?em=60 1x,
+						                img-re-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-re-s.jpg?em=40 1x,
+						                img-re-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-re-m.jpg?em=30 1x,
+						                img-re-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-re-m.jpg"
+						     srcset="img-re-m.jpg 1x,
+						             img-re-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-sq-s.jpg?em=80 1x,
+						                img-sq-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-sq-m.jpg?em=60 1x,
+						                img-sq-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-sq-s.jpg?em=40 1x,
+						                img-sq-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-m.jpg?em=30 1x,
+						                img-sq-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-m.jpg 1x,
+						             img-sq-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-sq-s.jpg?em=80 1x,
+						                img-sq-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-sq-m.jpg?em=60 1x,
+						                img-sq-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-sq-s.jpg?em=40 1x,
+						                img-sq-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-m.jpg?em=30 1x,
+						                img-sq-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-m.jpg 1x,
+						             img-sq-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-sq-s.jpg?em=80 1x,
+						                img-sq-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-sq-m.jpg?em=60 1x,
+						                img-sq-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-sq-s.jpg?em=40 1x,
+						                img-sq-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-m.jpg?em=30 1x,
+						                img-sq-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-m.jpg 1x,
+						             img-sq-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-sq-s.jpg?em=80 1x,
+						                img-sq-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-sq-m.jpg?em=60 1x,
+						                img-sq-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-sq-s.jpg?em=40 1x,
+						                img-sq-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-m.jpg?em=30 1x,
+						                img-sq-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-m.jpg 1x,
+						             img-sq-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--m  complex-col-1--l  complex-col-1-2--xl">
+					<picture>
+						<source media="(min-width: 80em)"
+						        srcset="img-re-s.jpg?em=80 1x,
+						                img-re-m.jpg?em=80 2x">
+						<source media="(min-width: 60em)"
+						        srcset="img-re-m.jpg?em=60 1x,
+						                img-re-l.jpg?em=60 2x">
+						<source media="(min-width: 40em)"
+						        srcset="img-re-s.jpg?em=40 1x,
+						                img-re-m.jpg?em=40 2x">
+						<source media="(min-width: 30em)"
+						        srcset="img-re-m.jpg?em=30 1x,
+						                img-re-l.jpg?em=30 2x">
+						<source srcset="img-re-s.jpg?em=20 1x,
+						                img-re-m.jpg?em=20 2x">
+						<img src="img-re-m.jpg"
+						     srcset="img-re-m.jpg 1x,
+						             img-re-l.jpg 2x"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -113,6 +295,8 @@
 			</div>
 		</div>
 	</div>
+
+	<p>Images from Pixabay &ndash; Hero: <a href="https://pixabay.com/en/mountains-valleys-plains-scenery-1149961/">Mountain valleys</a> &ndash; Other: <a href="https://pixabay.com/en/sunflower-bloom-yellow-nature-1200658/">Sunflower bloom</a>. Used under a Creative Commons licence.</p>
 
 	<p><a href="../">&laquo; Back to <code>&lt;picture&gt;</code> patterns</a></p>
 </div>

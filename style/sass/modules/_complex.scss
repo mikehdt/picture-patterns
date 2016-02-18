@@ -1,0 +1,105 @@
+// 1. Sneaky hack to make the columns even, combined with .tile width 100%
+.complex-grid {
+	display: flex;
+	flex-wrap: wrap;
+
+	&.complex-grid--guttered {
+		margin-left: -3vw;
+
+		> .complex-col {
+			padding-left: 3vw;
+		}
+	}
+
+	&.grid--center {
+		justify-content: center;
+	}
+
+	&.complex-grid--capped {
+		max-width: 212.8rem;
+	}
+}
+
+.complex-col {
+	position: relative;
+	margin-bottom: 3vw;
+}
+
+.complex-col-1   { width: 100%;         }
+.complex-col-1-2 { width: 1 / 2 * 100%; }
+
+@include mq($from: 30em) {
+	.complex-col-1--s   { width: 100%;         }
+	.complex-col-1-2--s { width: 1 / 2 * 100%; }
+}
+
+@include mq($from: 40em) {
+	.complex-col-1--m   { width: 100%;         }
+	.complex-col-1-2--m { width: 1 / 2 * 100%; }
+	.complex-col-1-4--m { width: 1 / 4 * 100%; }
+}
+
+@include mq($from: 60em) {
+	.complex-col-1--l   { width: 100%;         }
+	.complex-col-1-2--l { width: 1 / 2 * 100%; }
+	.complex-col-1-4--l { width: 1 / 4 * 100%; }
+}
+
+@include mq($from: 80em) {
+	.complex-col-1--xl   { width: 100%;         }
+	.complex-col-1-2--xl { width: 1 / 2 * 100%; }
+	.complex-col-1-4--xl { width: 1 / 4 * 100%; }
+}
+
+.complex-sidebar,
+.complex-content {
+	@extend .complex-grid;
+}
+
+.complex-sidebar {
+	display: none;
+	width: 28rem;
+	background-color: white;
+
+	@include mq($from: 60em) {
+		display: block;
+	}
+}
+
+.complex-content {
+	width: 100%;
+
+	@include mq($from: 60em) {
+		width: calc(100% - 28rem);
+	}
+}
+
+
+
+.complex-container {
+	position: relative;
+	max-width: 192rem;
+	margin-left:  auto;
+	margin-right: auto;
+	padding-left:  3vw;
+	padding-right: 3vw;
+}
+
+
+
+// Note that there is often a 1px "rounding" error on the bottom of the images.
+// This could be fixed with some height aspect calculation and overflow hidden,
+// but that may be overkill for this particular example...
+.complex-picture-title {
+	position: absolute;
+	bottom: -0.1rem;
+	left:   3vw;
+	right:  0;
+	padding: 1rem;
+	color: white;
+	text-shadow: 0 0.1rem 0 rgba(black, 0.8);
+
+	&.complex-picture-title--hero {
+		left: 0;
+	}
+}

@@ -20,7 +20,17 @@
 			<div class="tile">
 				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex art direction and <code>-w</code> syntax</h2>
 
-				<p>A real world example. Description TBC.</p>
+				<p>Here we have three types of images. A hero, a rectangular image and a square image. At smallest size, all images &ndash; even the square &ndash; are presented as rectangles. This necessitates forcing source selection at sizes, aka art direction. However, we will allow the browser to cache larger images if need be, yet if no images are cached then to pick the closest match.</p>
+
+				<p>Further adding complexity is a fixed sidebar at larger sizes, which the images need to adapt to. To keep gutters simple, they are set to <code>3vw</code> at all sizes. It is likely in a true real-world scenario that this value would change (eg. capping at the lower and upper bounds). The sidebar affects the hero and other images as well, resulting in the rather lengthy <code>source</code> list for each.</p>
+
+				<p>It is also likely that, unles in exceptional circumstance, you would want to consider automating generation of the <code>&lt;picture&gt;</code> tags and related scaled images.</p>
+
+				<p>For the rectangular and hero images, we can optimise them slightly if we don&rsquo;t care about forcing a particular source by just using straight image <code>srcset</code> with <code>-w</code> syntax. The square image, which at small sizes becomes rectangular, requires art direction and hence the <code>&lt;picture&gt;</code> tag.</p>
+
+				<p>Using the <code>-w</code> syntax and <code>&lt;source&gt;</code> tags is really complicated in this scenario by the fixed width sidebar which must be calcuated for, along with the gutters. Ironically, the simplest caching method (grab a large size, hold on to it) ends up with this mathematically complex source for selecting the right initial size to load.</p>
+
+				<p>A huge gotcha worth mentioning here &ndash; any <code>em</code> or <code>rem</code> units used in the <code>&lt;source&gt;</code> are calculated before any other CSS has loaded, so assume <code>1rem = 16px</code>.
 			</div>
 		</div>
 	</div>
@@ -33,45 +43,44 @@
 				<pre><code class="language-html">
 					<strong>Hero:</strong>
 					&lt;img src=&quot;img-hero-m.jpg&quot;
-					     srcset=&quot;img-hero-xl.jpg <mark class="m-1">2248w</mark>,
-					             img-hero-l.jpg  <mark class="m-2">1608w</mark>,
-					             img-hero-m.jpg  <mark class="m-3">1032w</mark>,
+					     srcset=&quot;img-hero-xl.jpg <mark class="m-1">1920w</mark>,
+					             img-hero-l.jpg  <mark class="m-2">1600w</mark>,
+					             img-hero-m.jpg  <mark class="m-3">1024w</mark>,
 					             img-hero-s.jpg  <mark class="m-4">560w</mark>&quot;
-					     sizes=&quot;(min-width: 60em) <mark class="m-5">calc(100vw - 17.5em)</mark>,
-					            <mark class="m-6">100vw</mark>&quot;&gt;
+					     sizes=&quot;(min-width: 60em) <mark class="m-1">calc(100vw - 17.5em)</mark>,
+					            <mark class="m-2">100vw</mark>&quot;&gt;
 
 					<strong>Rectangular block:</strong>
 					&lt;img src=&quot;img-re-m.jpg&quot;
 					     srcset=&quot;img-re-l.jpg <mark class="m-1">980w</mark>,
 					             img-re-m.jpg <mark class="m-2">660w</mark>,
 					             img-re-s.jpg <mark class="m-3">395w</mark>&quot;
-					     sizes=&quot;(min-width: 80em) <mark class="m-4">calc((100vw - (5 * 3vw) - 17.5em) / 2)</mark>,
-					            (min-width: 60em) <mark class="m-5">calc( 100vw - (3 * 3vw) - 17.5em)</mark>,
-					            (min-width: 40em) <mark class="m-6">calc((100vw - (5 * 3vw) - 17.5em) / 2)</mark>,
-					            <mark class="m-1">calc(100vw - (3 * 3vw))</mark>&quot;&gt;
+					     sizes=&quot;(min-width: 80em) <mark class="m-1">calc((100vw - (5 * 3vw) - 17.5em) / 2)</mark>,
+					            (min-width: 60em) <mark class="m-2">calc( 100vw - (3 * 3vw) - 17.5em)</mark>,
+					            (min-width: 40em) <mark class="m-3">calc((100vw - (5 * 3vw) - 17.5em) / 2)</mark>,
+					            <mark class="m-4">calc(100vw - (3 * 3vw))</mark>&quot;&gt;
 
 					<strong>Square block:</strong>
 					&lt;picture&gt;
 					    &lt;source media=&quot;(min-width: 30em)&quot;
-					            srcset=&quot;img-sq-l.jpg <mark class="m-1">460w</mark>,
-					                    img-sq-m.jpg <mark class="m-2">300w</mark>,
-					                    img-sq-s.jpg <mark class="m-3">175w</mark>&quot;
-					            sizes=&quot;(min-width: 80em) <mark class="m-4">calc((100vw - (5 * 3vw) - 17.5em) / 4)</mark>,
-					                   (min-width: 60em) <mark class="m-5">calc((100vw - (3 * 3vw) - 17.5em) / 2)</mark>,
-					                   (min-width: 40em) <mark class="m-6">calc((100vw - (5 * 3vw)) / 4)</mark>,
-					                   <mark class="m-1">calc((100vw - (3 * 3vw)) / 2)</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20em)&quot;
-					            srcset=&quot;img-re-l.jpg <mark class="m-1">980w</mark>,
+					            srcset=&quot;img-sq-l.jpg <mark class="m-1">448w</mark>,
+					                    img-sq-m.jpg <mark class="m-2">302w</mark>,
+					                    img-sq-s.jpg <mark class="m-3">180w</mark>&quot;
+					            sizes=&quot;(min-width: 80em) <mark class="m-1">calc((100vw - (5 * 3vw) - 17.5em) / 4)</mark>,
+					                   (min-width: 60em) <mark class="m-2">calc((100vw - (3 * 3vw) - 17.5em) / 2)</mark>,
+					                   (min-width: 40em) <mark class="m-3">calc((100vw - (5 * 3vw)) / 4)</mark>,
+					                   <mark class="m-4">calc((100vw - (3 * 3vw)) / 2)</mark>&quot;&gt;
+					    &lt;source srcset=&quot;img-re-l.jpg <mark class="m-1">980w</mark>,
 					                    img-re-m.jpg <mark class="m-2">660w</mark>,
 					                    img-re-s.jpg <mark class="m-3">395w</mark>&quot;
-					            sizes=&quot;<mark class="m-4">100vw</mark>&quot;&gt;
+					            sizes=&quot;<mark class="m-1">100vw</mark>&quot;&gt;
 					    &lt;img src=&quot;img-sq-m.jpg&quot;
-					         srcset=&quot;img-sq-l.jpg <mark class="m-1">460w</mark>,
-					                 img-sq-m.jpg <mark class="m-2">300w</mark>,
-					                 img-sq-s.jpg <mark class="m-3">175w</mark>&quot;
-					         sizes=&quot;(min-width: 60em) <mark class="m-4">calc((100vw - (2 * 3vw) - 17.5em) / 4)</mark>,
-					                (min-width: 40em) <mark class="m-5">50vw</mark>,
-					                <mark class="m-6">100vw</mark>&quot;&gt;
+					         srcset=&quot;img-sq-l.jpg <mark class="m-1">448w</mark>,
+					                 img-sq-m.jpg <mark class="m-2">302w</mark>,
+					                 img-sq-s.jpg <mark class="m-3">180w</mark>&quot;
+					         sizes=&quot;(min-width: 60em) <mark class="m-1">calc((100vw - (2 * 3vw) - 17.5em) / 4)</mark>,
+					                (min-width: 40em) <mark class="m-2">50vw</mark>,
+					                <mark class="m-3">100vw</mark>&quot;&gt;
 					&lt;/picture&gt;
 				</code></pre>
 			</div>
@@ -79,11 +88,159 @@
 	</div>
 </div>
 
-<div class="grid  grid--center">
-	<div class="col  col-1">
-		<p class="image">
+<div class="complex-grid  complex-grid--capped">
+	<div class="complex-sidebar">
+		<div class="inset">
+			<h2>Sidebar</h2>
+			<p>Fixed width sidebar</p>
+		</div>
+	</div>
 
-		</p>
+	<!-- Explicit matching -->
+	<div class="complex-content">
+		<div class="complex-grid  complex-grid--center  complex-col-1">
+			<div class="complex-col  complex-col-1">
+				<!-- Image with fallback behaviour -->
+				<!-- The ?em=x tag is to stop browsers from using a larger 1x source as a smaller 2x source -->
+				<img src="hero-m.jpg"
+				     srcset="hero-xl.jpg 1920w,
+				             hero-l.jpg 1600w,
+				             hero-m.jpg 1024w,
+				             hero-s.jpg 560w"
+				     sizes="(min-width: 60em) calc(100vw - 17.5em),
+				            100vw"
+				     class="img-full">
+				<p class="complex-picture-title  complex-picture-title--hero"><strong>Hero Image</strong></p>
+			</div>
+		</div>
+
+		<!-- Order of srcet does not seem to matter, but I put 1x first. -->
+		<!-- The img tag has a fallback srcset for compatibility; this is not strictly necessary -->
+		<div class="complex-container">
+			<div class="complex-grid  complex-grid--center  complex-grid--guttered">
+				<div class="complex-col  complex-col-1  complex-col-1-2--m  complex-col-1--l  complex-col-1-2--xl">
+					<img src="img-re-m.jpg"
+					     srcset="img-re-l.jpg 980w,
+					             img-re-m.jpg 660w,
+					             img-re-s.jpg 395w"
+					     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 2),
+					            (min-width: 60em) calc( 100vw - (3 * 3vw) - 17.5em),
+					            (min-width: 40em) calc((100vw - (5 * 3vw) - 17.5em) / 2),
+					            calc(100vw - (3 * 3vw))"
+					     class="img-full">
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-l.jpg 448w, img-sq-m.jpg 302w, img-sq-s.jpg 180w"
+						        sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						               (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						               (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						               calc((100vw - (3 * 3vw)) / 2)">
+						<source srcset="img-re-l.jpg 980w,
+						                img-re-m.jpg 660w,
+						                img-re-s.jpg 395w"
+						        sizes="100vw">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-l.jpg 448w,
+						             img-sq-m.jpg 302w,
+						             img-sq-s.jpg 180w"
+						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
+						            (min-width: 40em) 50vw,
+						            100vw"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-l.jpg 448w, img-sq-m.jpg 302w, img-sq-s.jpg 180w"
+						        sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						               (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						               (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						               calc((100vw - (3 * 3vw)) / 2)">
+						<source srcset="img-re-l.jpg 980w,
+						                img-re-m.jpg 660w,
+						                img-re-s.jpg 395w"
+						        sizes="100vw">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-l.jpg 448w,
+						             img-sq-m.jpg 302w,
+						             img-sq-s.jpg 180w"
+						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
+						            (min-width: 40em) 50vw,
+						            100vw"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-l.jpg 448w, img-sq-m.jpg 302w, img-sq-s.jpg 180w"
+						        sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						               (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						               (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						               calc((100vw - (3 * 3vw)) / 2)">
+						<source srcset="img-re-l.jpg 980w,
+						                img-re-m.jpg 660w,
+						                img-re-s.jpg 395w"
+						        sizes="100vw">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-l.jpg 448w,
+						             img-sq-m.jpg 302w,
+						             img-sq-s.jpg 180w"
+						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
+						            (min-width: 40em) 50vw,
+						            100vw"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--s  complex-col-1-4--m  complex-col-1-2--l  complex-col-1-4--xl">
+					<picture>
+						<source media="(min-width: 30em)"
+						        srcset="img-sq-l.jpg 448w, img-sq-m.jpg 302w, img-sq-s.jpg 180w"
+						        sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						               (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						               (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						               calc((100vw - (3 * 3vw)) / 2)">
+						<source srcset="img-re-l.jpg 980w,
+						                img-re-m.jpg 660w,
+						                img-re-s.jpg 395w"
+						        sizes="100vw">
+						<img src="img-sq-m.jpg"
+						     srcset="img-sq-l.jpg 448w,
+						             img-sq-m.jpg 302w,
+						             img-sq-s.jpg 180w"
+						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
+						            (min-width: 40em) 50vw,
+						            100vw"
+						     class="img-full">
+					</picture>
+					<p class="complex-picture-title">Title</p>
+				</div>
+
+				<div class="complex-col  complex-col-1  complex-col-1-2--m  complex-col-1--l  complex-col-1-2--xl">
+					<img src="img-re-m.jpg"
+					     srcset="img-re-l.jpg 980w,
+					             img-re-m.jpg 660w,
+					             img-re-s.jpg 395w"
+					     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 2),
+					            (min-width: 60em) calc( 100vw - (3 * 3vw) - 17.5em),
+					            (min-width: 40em) calc((100vw - (5 * 3vw) - 17.5em) / 2),
+					            calc(100vw - (3 * 3vw))"
+					     class="img-full">
+					<p class="complex-picture-title">Title</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
