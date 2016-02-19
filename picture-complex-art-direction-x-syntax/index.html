@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;picture&gt; with complex art direction and -x syntax &ndash; &lt;picture&gt; patterns</title>
+<title>Complex art direction with -x syntax &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,11 +18,11 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with complex art direction and <code>-x</code> syntax</h2>
+				<h2 class="tile__title">Complex art direction with <code>-x</code> syntax</h2>
 
 				<p>Here we have three types of images. A hero, a rectangular image and a square image. At smallest size, all images &ndash; even the square &ndash; are presented as rectangles. This necessitates forcing source selection at sizes, aka art direction. It may also, for reasons of visual quality, be desirable to ensure the best fitting image.</p>
 
-				<p>For reasons of avoiding caching issues, <code>?em=xx</code> queries are used to make each size &ldquo;unique&rdquo;.</p>
+				<p>For reasons of avoiding caching issues, <code>?em=xx</code> queries are used to make each size &ldquo;unique&rdquo;. If this was not done, varying different larger images may be used when not desired.</p>
 
 				<p>Further adding complexity is a fixed sidebar at larger sizes, which the images need to adapt to. To keep gutters simple, they are set to <code>3vw</code> at all sizes. It is likely in a true real-world scenario that this value would change (eg. capping at the lower and upper bounds). The sidebar affects the hero and other images as well, resulting in the rather lengthy <code>source</code> list for each.</p>
 
@@ -41,10 +41,10 @@
 				<pre><code class="language-html">
 					<strong>Hero:</strong>
 					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 80em)&quot;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 80em)</mark>&quot;
 					            srcset=&quot;img-hero-l.jpg?em=80  <mark class="m-1">1x</mark>,
 					                    img-hero-xl.jpg?em=80 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40em)&quot;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 40em)</mark>&quot;
 					            srcset=&quot;img-hero-m.jpg?em=40 <mark class="m-1">1x</mark>,
 					                    img-hero-l.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
 					    &lt;source srcset=&quot;img-hero-s.jpg?em=20 <mark class="m-1">1x</mark>,
@@ -56,16 +56,16 @@
 
 					<strong>Rectangular block:</strong>
 					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 80em)&quot;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 80em)</mark>&quot;
 					            srcset=&quot;img-re-s.jpg?em=80 <mark class="m-1">1x</mark>,
 					                    img-re-m.jpg?em=80 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 60em)&quot;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 60em)</mark>&quot;
 					            srcset=&quot;img-re-m.jpg?em=60 <mark class="m-1">1x</mark>,
 					                    img-re-l.jpg?em=60 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40em)&quot;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40em)</mark>&quot;
 					            srcset=&quot;img-re-s.jpg?em=40 <mark class="m-1">1x</mark>,
 					                    img-re-m.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 30em)&quot;
+					    &lt;source media=&quot;<mark class="m-4">(min-width: 30em)</mark>&quot;
 					            srcset=&quot;img-re-m.jpg?em=30 <mark class="m-1">1x</mark>,
 					                    img-re-l.jpg?em=30 <mark class="m-2">2x</mark>&quot;&gt;
 					    &lt;source srcset=&quot;img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
@@ -77,23 +77,23 @@
 
 					<strong>Square block:</strong>
 					&lt;picture&gt;
-					    &lt;source media="(min-width: 80em)"
-					            srcset="img-sq-s.jpg?em=80 <mark class="m-1">1x</mark>,
-					                    img-sq-m.jpg?em=80 <mark class="m-2">2x</mark>"&gt;
-					    &lt;source media="(min-width: 60em)"
-					            srcset="img-sq-m.jpg?em=60 <mark class="m-1">1x</mark>,
-					                    img-sq-l.jpg?em=60 <mark class="m-2">2x</mark>"&gt;
-					    &lt;source media="(min-width: 40em)"
-					            srcset="img-sq-s.jpg?em=40 <mark class="m-1">1x</mark>,
-					                    img-sq-m.jpg?em=40 <mark class="m-2">2x</mark>"&gt;
-					    &lt;source media="(min-width: 30em)"
-					            srcset="img-sq-m.jpg?em=30 <mark class="m-1">1x</mark>,
-					                    img-sq-l.jpg?em=30 <mark class="m-2">2x</mark>"&gt;
-					    &lt;source srcset="img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
-					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>"&gt;
-					    &lt;img src="img-sq-m.jpg"
-					         srcset="img-sq-m.jpg <mark class="m-1">1x</mark>,
-					                 img-sq-l.jpg <mark class="m-2">2x</mark>"&gt;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 80em)</mark>&quot;
+					            srcset=&quot;img-sq-s.jpg?em=80 <mark class="m-1">1x</mark>,
+					                    img-sq-m.jpg?em=80 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 60em)</mark>&quot;
+					            srcset=&quot;img-sq-m.jpg?em=60 <mark class="m-1">1x</mark>,
+					                    img-sq-l.jpg?em=60 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40em)</mark>&quot;
+					            srcset=&quot;img-sq-s.jpg?em=40 <mark class="m-1">1x</mark>,
+					                    img-sq-m.jpg?em=40 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-4">(min-width: 30em)</mark>&quot;
+					            srcset=&quot;img-sq-m.jpg?em=30 <mark class="m-1">1x</mark>,
+					                    img-sq-l.jpg?em=30 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source srcset=&quot;img-re-s.jpg?em=20 <mark class="m-1">1x</mark>,
+					                    img-re-m.jpg?em=20 <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;img src=&quot;img-sq-m.jpg&quot;
+					         srcset=&quot;img-sq-m.jpg <mark class="m-1">1x</mark>,
+					                 img-sq-l.jpg <mark class="m-2">2x</mark>&quot;&gt;
 					&lt;/picture&gt;
 				</code></pre>
 			</div>
@@ -311,7 +311,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

@@ -20,9 +20,9 @@
 	</div>
 
 	<div class="grid  grid--center">
-		<div class="col  col-1  col-1-2--s">
+		<div class="col  col-1">
 			<div class="tile">
-				<h2 class="tile__title">The basics</h2>
+				<h2 class="tile__title"><img src="img/icon-basics.svg" class="icon"> The basics</h2>
 				<p>Coming soon&hellip; just know for now that the <code>&lt;picture&gt;</code> element is a fussy and inconsistently implemented beast, and that the awesome <a href="https://github.com/scottjehl/picturefill">Picturefill</a> makes things bearable. Note that Picturefill is not used with any of the examples yet (it will be available as an option in a later revision), so you are at the mercy of your current browser&hellip;</p>
 				<p>This project is a work in progress. More examples and resources will be added soon.</p>
 			</div>
@@ -31,75 +31,54 @@
 
 	<hr>
 
-	<div class="grid  grid--center">
+	<div class="grid  grid--balance-height  grid--center">
 		<div class="col  col-1  col-1-2--s">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -x</code></h2>
+				<h2 class="tile__title"><img src="img/icon-2x.svg" class="icon"> <code>&lt;img&gt;</code> and resolution changing</h2>
 				<dl>
-					<dt><a href="img-srcset-x-only/"><code>&lt;img&gt;</code> with <code>srcset -x</code> syntax</a></dt>
-					<dd><strong>Use:</strong> swap out high res art by screen density only</dd>
+					<dt><a href="img-srcset-x-only/">Using <code>srcset -x</code> to swap resolution</a></dt>
+					<dd>Source image is picked based on screen density. Good for fixed images.</dd>
+
+					<dt><a href="img-srcset-w-only/">Using <code>srcset -w</code> to pick the best size</a></dt>
+					<dd>Source image is picked intelligently based on available widths, screen density and display size.</dd>
+
+					<dt><a href="img-srcset-w-multiple/">Using <code>srcset -w</code> to pick the best size, and the image changes size across breakpoints</a></dt>
+					<dd>Source image is picked intelligently based on available widths, screen density and display size.</dd>
+
+					<dt><a href="img-srcset-w-incomplete/">Testing <code>srcset -w</code> syntax, when no <code>source</code> attribute is set</a></dt>
+					<dd>A stress test for browsers in how they handle this non-spec situation.</dd>
 				</dl>
 			</div>
 		</div>
 
 		<div class="col  col-1  col-1-2--s">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code></h2>
+				<h2 class="tile__title"><img src="img/icon-art-direction.svg" class="icon"> <code>&lt;picture&gt;</code> and art direction</h2>
 				<dl>
-					<dt><a href="img-srcset-w-only/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, one size</a></dt>
-					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
+					<dt><a href="picture-srcset-x/">Using <code>-x</code> syntax to set density</a></dt>
+					<dd>Allow different sources with density support.</dd>
 
-					<dt><a href="img-srcset-w-multiple/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, multiple sizes</a></dt>
-					<dd><strong>Use:</strong> swap out high res art, permissive caching</dd>
+					<dt><a href="picture-srcset-w/">Using <code>-w</code> syntax to set density</a></dt>
+					<dd>Allow the browser to more intelligently pick the best source based on available widths, screen density and display size at each breakpoint.</dd>
 
-					<dt><a href="img-srcset-w-incomplete/"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</a></dt>
-					<dd><strong>Use:</strong> test browser handling of incomplete <code>-w</code> syntax</dd>
+					<dt><a href="picture-simple-art-direction/">Simple art direction changes</a></dt>
+					<dd>When images need to either display differently cropped sources, or change aspect across breakpoints, art direction is needed.</dd>
+
+					<dt><a href="picture-complex-art-direction-x-syntax/">Complex art direction with <code>-x</code> syntax</a></dt>
+					<dd>Using <code>-x</code> syntax to enforce explicit source selection with complex image elements, changing aspect and scale multiple times</dd>
+
+					<dt><a href="picture-complex-art-direction-w-syntax/">Complex art direction with <code>-w</code> syntax</a></dt>
+					<dd>Using <code>-w</code> syntax to allow permissive source selection with complex image elements, changing aspect and scale multiple times</dd>
 				</dl>
 			</div>
 		</div>
 
-		<div class="col  col-1  col-1-2--s">
+		<div class="col  col-1">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -x</code></h2>
+				<h2 class="tile__title"><img src="img/icon-other.svg" class="icon"> Other examples</h2>
 				<dl>
-					<dt><a href="picture-srcset-x/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-x</code> syntax</a></dt>
-					<dd><strong>Use:</strong> Force different sources with high density support</dd>
-				</dl>
-			</div>
-		</div>
-
-		<div class="col  col-1  col-1-2--s">
-			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>srcset -w</code></h2>
-				<dl>
-					<dt><a href="picture-srcset-w/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-w</code> syntax</a></dt>
-					<dd><strong>Use:</strong> Supposedly more intelligent source choice.</dd>
-				</dl>
-			</div>
-		</div>
-
-		<div class="col  col-1  col-1-2--s">
-			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>source</code></h2>
-				<dl>
-					<dt><a href="picture-source-type/"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> format types</a></dt>
-					<dd><strong>Use:</strong> Provide better formats for supported browsers with a fallback for others</dd>
-				</dl>
-			</div>
-		</div>
-
-		<div class="col  col-1  col-1-2--s">
-			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with art direction</h2>
-				<dl>
-					<dt><a href="picture-simple-art-direction/"><code>&lt;picture&gt;</code> with simple art direction <code>&lt;source&gt;</code> changing</a></dt>
-					<dd><strong>Use:</strong> Simple art direction, mix of caching</dd>
-
-					<dt><a href="picture-complex-art-direction-x-syntax/"><code>&lt;picture&gt;</code> with complex art direction and <code>-x</code> syntax</a></dt>
-					<dd><strong>Use:</strong> Complex art direction, explicit caching</dd>
-
-					<dt><a href="picture-complex-art-direction-w-syntax/"><code>&lt;picture&gt;</code> with complex art direction and <code>-w</code> syntax</a></dt>
-					<dd><strong>Use:</strong> Complex art direction, permissive caching</dd>
+					<dt><a href="picture-source-type/">Using <code>&lt;picture&gt;</code> to choose the best image format types</a></dt>
+					<dd>Provide different formats based on browser support, with fallbacks provided</dd>
 				</dl>
 			</div>
 		</div>
@@ -107,7 +86,7 @@
 
 	<hr>
 
-	<div class="grid  grid--center">
+	<div class="grid  grid--balance-height  grid--center">
 		<div class="col  col-1  col-1-2--s">
 			<div class="tile">
 				<h2 class="tile__title">Further Resources</h2>
@@ -145,7 +124,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

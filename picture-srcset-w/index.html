@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;picture&gt; with &lt;source&gt; and -w syntax &ndash; &lt;picture&gt; patterns</title>
+<title>Using -w syntax to set density &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,7 +18,7 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-w</code> syntax</h2>
+				<h2 class="tile__title">Using <code>-w</code> syntax to set density</h2>
 
 				<p>Here are the basics of using <code>&lt;picture&gt;</code> with the <code>-w</code> syntax. Remember that the <code>&lt;picture&gt;</code> is really just a wrapper of the <code>&lt;img&gt;</code> element &ndash; it is required!</p>
 
@@ -36,18 +36,17 @@
 
 				<pre><code class="language-html">
 					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 70rem)&quot; srcset=&quot;img-1280.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 50rem)&quot; srcset=&quot;img-960.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40rem)&quot; srcset=&quot;img-640.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20rem)&quot; srcset=&quot;img-480.png&quot;&gt;
-					    &lt;img src=&quot;img-320.png&quot;&gt;
-					&lt;/picture&gt;
-
-					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 70rem)&quot; srcset=&quot;img-1920.png <span class="h-1">1920w</span>, img-1280.png <span class="h-2">1280w</span>&quot; sizes=&quot;100vw&quot;&gt;
-					    &lt;source media=&quot;(min-width: 50rem)&quot; srcset=&quot;img-1920.png <span class="h-1">1920w</span>, img-960.png   <span class="h-2">960w</span>&quot; sizes=&quot;100vw&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40rem)&quot; srcset=&quot;img-1280.png <span class="h-1">1280w</span>, img-640.png   <span class="h-2">640w</span>&quot; sizes=&quot;100vw&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20rem)&quot; srcset=&quot;img-960.png   <span class="h-1">960w</span>, img-480.png   <span class="h-2">480w</span>&quot; sizes=&quot;100vw&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 70rem)</mark>&quot;
+					            srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>, img-1280.png <mark class="m-2">1280w</mark>&quot;
+					            sizes=&quot;<mark class="m-1">100vw</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 50rem)</mark>&quot;
+					            srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>, img-960.png   <mark class="m-2">960w</mark>&quot;
+					            sizes=&quot;<mark class="m-1">100vw</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40rem)</mark>&quot;
+					            srcset=&quot;img-1280.png <mark class="m-1">1280w</mark>, img-640.png   <mark class="m-2">640w</mark>&quot;
+					            sizes=&quot;<mark class="m-1">100vw</mark>&quot;&gt;
+					    &lt;source srcset=&quot;img-960.png   <mark class="m-1">960w</mark>, img-480.png   <mark class="m-2">480w</mark>&quot;
+					            sizes=&quot;<mark class="m-1">100vw</mark>&quot;&gt;
 					    &lt;img src=&quot;img-320.png&quot;&gt;
 					&lt;/picture&gt;
 				</code></pre>
@@ -58,21 +57,64 @@
 
 <p class="image">
 	<picture>
-		<source media="(min-width: 70rem)" srcset="img-1280.png">
-		<source media="(min-width: 50rem)" srcset="img-960.png">
-		<source media="(min-width: 40rem)" srcset="img-640.png">
-		<source media="(min-width: 20rem)" srcset="img-480.png">
-		<img src="img-320.png" class="img-full">
-	</picture>
-
-	<picture>
-		<source media="(min-width: 70rem)" srcset="img-1920.png 1920w, img-1280.png 1280w" sizes="100w">
-		<source media="(min-width: 50rem)" srcset="img-1920.png 1920w, img-960.png   960w" sizes="100w">
-		<source media="(min-width: 40rem)" srcset="img-1280.png 1280w, img-640.png   640w" sizes="100w">
-		<source media="(min-width: 20rem)" srcset="img-960.png   960w, img-480.png   480w" sizes="100w">
+		<source media="(min-width: 70rem)"
+		        srcset="img-1920.png 1920w, img-1280.png 1280w"
+		        sizes="100w">
+		<source media="(min-width: 50rem)"
+		        srcset="img-1920.png 1920w, img-960.png   960w"
+		        sizes="100w">
+		<source media="(min-width: 40rem)"
+		        srcset="img-1280.png 1280w, img-640.png   640w"
+		        sizes="100w">
+		<source srcset="img-960.png 960w, img-480.png 480w"
+		        sizes="100w">
 		<img src="img-320.png" class="img-full">
 	</picture>
 </p>
+
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<p>Technically, this next image is using <code>-x</code> syntax. It is presented on the same page to demonstrate the source image caching.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;picture&gt;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 70rem)</mark>&quot;
+					            srcset=&quot;img-1280.png&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 50rem)</mark>&quot;
+					            srcset=&quot;img-960.png&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40rem)</mark>&quot;
+					            srcset=&quot;img-640.png&quot;&gt;
+					    &lt;source srcset=&quot;img-480.png&quot;&gt;
+					    &lt;img src=&quot;img-320.png&quot;&gt;
+					&lt;/picture&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
+	<picture>
+		<source media="(min-width: 70rem)"
+		        srcset="img-1280.png">
+		<source media="(min-width: 50rem)"
+		        srcset="img-960.png">
+		<source media="(min-width: 40rem)"
+		        srcset="img-640.png">
+		<source srcset="img-480.png">
+		<img src="img-320.png" class="img-full">
+	</picture>
+	</p>
 
 <div class="container  container--padded">
 	<div class="grid  grid--center">
@@ -97,7 +139,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

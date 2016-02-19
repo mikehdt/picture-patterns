@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;picture&gt; with &lt;source&gt; and -x syntax &ndash; &lt;picture&gt; patterns</title>
+<title>Using -x syntax to set density &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,13 +18,13 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with <code>&lt;source&gt;</code> and <code>-x</code> syntax</h2>
+				<h2 class="tile__title">Using <code>-x</code> syntax to set density</h2>
 
-				<p>Here are the basics of using <code>&lt;picture&gt;</code> with the <code>-x</code> syntax. Remember that the <code>&lt;picture&gt;</code> is really just a wrapper of the <code>&lt;img&gt;</code> element &ndash; it is required!</p>
+				<p>Here are the basics of using <code>&lt;picture&gt;</code> with the <code>-x</code> syntax. Remember that the <code>&lt;picture&gt;</code> is really just a <code>src</code>-selecting wrapper for the <code>&lt;img&gt;</code> element &ndash; the <code>&lt;img&gt;</code> element is always required!</p>
 
-				<p>Without any <code>-x</code> descriptor, <code>1x</code> is assumed. Depending on browser, you may see that the 2&times; artwork gets used if it has been cached from above.</p>
+				<p>Without any <code>-x</code> descriptor, <code>1x</code> is assumed. Depending on browser, you may see that the 2&times; artwork gets used if it has been cached previously. When used in this way, the browser is forced to use certain images across certain breakpoints, but may still hold on to and use a higher-resolution image than needed.</p>
 
-				<p>When used in this way, the browser is forced to use certain images across certain breakpoints, but may still hold on to a higher-resolution image than needed if it has been cached.</p>
+				<p>Note that the <code>src</code> specified for the <code>&lt;img&gt;</code> tag will only ever be shown if none of the <code>&lt;source&gt;</code> queries match. However, in these examples as the last <code>&lt;source&gt;</code> tag specifies no <code>media</code> attribute, it will always act as the fallback (if the others have not matched) for each image.</p>
 			</div>
 		</div>
 	</div>
@@ -36,18 +36,13 @@
 
 				<pre><code class="language-html">
 					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 70rem)&quot; srcset=&quot;img-1280.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 50rem)&quot; srcset=&quot;img-960.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40rem)&quot; srcset=&quot;img-640.png&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20rem)&quot; srcset=&quot;img-480.png&quot;&gt;
-					    &lt;img src=&quot;img-320.png&quot;&gt;
-					&lt;/picture&gt;
-
-					&lt;picture&gt;
-					    &lt;source media=&quot;(min-width: 70rem)&quot; srcset=&quot;img-1280.png <span class="h-1">1x</span>, img-1920.png <span class="h-2">2x</span>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 50rem)&quot; srcset=&quot;img-960.png  <span class="h-1">1x</span>, img-1920.png <span class="h-2">2x</span>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 40rem)&quot; srcset=&quot;img-640.png  <span class="h-1">1x</span>, img-1280.png <span class="h-2">2x</span>&quot;&gt;
-					    &lt;source media=&quot;(min-width: 20rem)&quot; srcset=&quot;img-480.png  <span class="h-1">1x</span>, img-960.png  <span class="h-2">2x</span>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 70rem)</mark>&quot;
+					            srcset=&quot;img-1280.png&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 50rem)</mark>&quot;
+					            srcset=&quot;img-960.png&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40rem)</mark>&quot;
+					            srcset=&quot;img-640.png&quot;&gt;
+					    &lt;source srcset=&quot;img-480.png&quot;&gt;
 					    &lt;img src=&quot;img-320.png&quot;&gt;
 					&lt;/picture&gt;
 				</code></pre>
@@ -61,15 +56,40 @@
 		<source media="(min-width: 70rem)" srcset="img-1280.png">
 		<source media="(min-width: 50rem)" srcset="img-960.png">
 		<source media="(min-width: 40rem)" srcset="img-640.png">
-		<source media="(min-width: 20rem)" srcset="img-480.png">
+		<source srcset="img-480.png">
 		<img src="img-320.png" class="img-full">
 	</picture>
+</p>
 
+<div class="container  container--padded">
+	<div class="grid  grid--center">
+		<div class="col  col-1  col-3-4--m  col-2-3--l">
+			<div class="tile">
+				<h3>Source:</h3>
+
+				<pre><code class="language-html">
+					&lt;picture&gt;
+					    &lt;source media=&quot;<mark class="m-1">(min-width: 70rem)</mark>&quot;
+					            srcset=&quot;img-1280.png <mark class="m-1">1x</mark>, img-1920.png <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-2">(min-width: 50rem)</mark>&quot;
+					            srcset=&quot;img-960.png  <mark class="m-1">1x</mark>, img-1920.png <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source media=&quot;<mark class="m-3">(min-width: 40rem)</mark>&quot;
+					            srcset=&quot;img-640.png  <mark class="m-1">1x</mark>, img-1280.png <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;source srcset=&quot;img-480.png  <mark class="m-1">1x</mark>, img-960.png  <mark class="m-2">2x</mark>&quot;&gt;
+					    &lt;img src=&quot;img-320.png&quot;&gt;
+					&lt;/picture&gt;
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="image">
 	<picture>
 		<source media="(min-width: 70rem)" srcset="img-1280.png 1x, img-1920.png 2x">
 		<source media="(min-width: 50rem)" srcset="img-960.png  1x, img-1920.png 2x">
 		<source media="(min-width: 40rem)" srcset="img-640.png  1x, img-1280.png 2x">
-		<source media="(min-width: 20rem)" srcset="img-480.png  1x, img-960.png  2x">
+		<source srcset="img-480.png  1x, img-960.png  2x">
 		<img src="img-320.png" class="img-full">
 	</picture>
 </p>
@@ -97,7 +117,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

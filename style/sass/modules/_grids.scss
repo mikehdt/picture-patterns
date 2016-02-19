@@ -21,7 +21,6 @@
 	}
 
 	> .col {
-		display: flex; // [1]
 		padding-left: map-get($grid-margins, s);
 
 		@include mq($from: m) { padding-left: map-get($grid-margins, m); }
@@ -32,6 +31,11 @@
 		margin-left: 0;
 
 		> .col { padding-left: 0; }
+	}
+
+	&.grid--balance-height > .col {
+		display: flex; // [1]
+		flex-wrap: wrap;
 	}
 }
 

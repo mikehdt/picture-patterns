@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;img&gt; srcset -w syntax, no source attribute &ndash; &lt;picture&gt; patterns</title>
+<title>Testing srcset -w syntax, when no source attribute is set &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,7 +18,7 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, no source attribute</h2>
+				<h2 class="tile__title">Testing <code>srcset -w</code> syntax, when no <code>source</code> attribute is set</h2>
 
 				<p>By deliberately leaving off the otherwise requires <code>sources</code> attribute, we often get some weird browser behaviour. You should not leave off the <code>sources</code> attribute, this is just to provide a counterpoint as to why it is needed.</p>
 
@@ -35,25 +35,25 @@
 				<h3>Source:</h3>
 
 				<pre><code class="language-html">
-					&lt;img src=&quot;img-320.png&quot;
-					     srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
+					&lt;img srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
 					             img-1280.png <mark class="m-2">1280w</mark>,
 					             img-960.png   <mark class="m-3">960w</mark>,
 					             img-640.png   <mark class="m-4">640w</mark>,
 					             img-480.png   <mark class="m-5">480w</mark>,
-					             img-320.png   <mark class="m-6">320w</mark>&quot;&gt;
+					             img-320.png   <mark class="m-6">320w</mark>&quot;
+					     src=&quot;img-320.png&quot;&gt;
 
-					&lt;img src=&quot;img-320.png&quot;
-					     srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
+					&lt;img srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
 					             img-1280.png <mark class="m-2">1280w</mark>,
 					             img-960.png   <mark class="m-3">960w</mark>,
 					             img-640.png   <mark class="m-4">640w</mark>,
 					             img-480.png   <mark class="m-5">480w</mark>,
-					             img-320.png&quot;&gt;
+					             img-320.png&quot;
+					     src=&quot;img-320.png&quot;&gt;
 
-					&lt;img src=&quot;img-320.png&quot;
-					     srcset=&quot;img-320.png <mark class="m-1">1x</mark>,
-					             img-640.png <mark class="m-2">2x</mark>&quot;&gt;
+					&lt;img srcset=&quot;img-320.png <mark class="m-1">1x</mark>,
+					             img-640.png <mark class="m-2">2x</mark>&quot;
+					     src=&quot;img-320.png&quot;&gt;
 				</code></pre>
 			</div>
 		</div>
@@ -63,20 +63,20 @@
 <div class="grid  grid--center  grid--no-gutter">
 	<div class="col  col-1">
 		<p class="image">
-			<img src="img-320.png"
-			     srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
+			<img srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
+			     src="img-320.png"
 			     class="img-full">
 		</p>
 
 		<p class="image">
-			<img src="img-320.png"
-			     srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png"
+			<img srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png"
+			     src="img-320.png"
 			     class="img-full">
 		</p>
 
 		<p class="image">
-			<img src="img-320.png"
-			     srcset="img-320.png 1x, img-640.png 2x"
+			<img srcset="img-320.png 1x, img-640.png 2x"
+			     src="img-320.png"
 			     class="img-full">
 		</p>
 	</div>
@@ -105,7 +105,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;picture&gt; with &lt;source&gt; &ndash; &lt;picture&gt; patterns</title>
+<title>Simple art direction changes &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,9 +18,11 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;picture&gt;</code> with simple art direction <code>&lt;source&gt;</code> changing</h2>
+				<h2 class="tile__title">Simple art direction changes</h2>
 
 				<p>Here we combine the two syntaxes. At small sizes, a square image will be shown. At larger images, a rectangular image will be shown. The swap between these two is enforced by the use of <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> elements with <code>media</code> attributes.</p>
+
+				<p>As has been seen in the plain <code>-x</code> and <code>-w</code> syntax examples, larger images may be cached and used, even when the window is scaled down again.</p>
 			</div>
 		</div>
 	</div>
@@ -39,7 +41,7 @@
 					                    img-640.png   <mark class="m-4">640w</mark>,
 					                    img-480.png   <mark class="m-5">480w</mark>,
 					                    img-320.png   <mark class="m-6">320w</mark>&quot;
-					            sizes=&quot;50vw&quot;&gt;
+					            sizes=&quot;<mark class="m-1">50vw</mark>&quot;&gt;
 					    &lt;source srcset=&quot;img-c-170.png <mark class="m-1">1x</mark>,
 					                    img-c-340.png <mark class="m-2">2x</mark>&quot;&gt;
 					    &lt;img src=&quot;img-c-170.png&quot;&gt;
@@ -87,7 +89,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;img&gt; srcset -w syntax, multiple sizes &ndash; &lt;picture&gt; patterns</title>
+<title>Using srcset -w to pick the best size, and the image changes size across breakpoints &ndash; &lt;picture&gt; patterns</title>
 <link href="../style/css/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -18,13 +18,13 @@
 	<div class="grid  grid--center">
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
-				<h2 class="tile__title"><code>&lt;img&gt;</code> with <code>srcset -w</code> syntax, multiple sizes</h2>
+				<h2 class="tile__title">Using <code>srcset -w</code> to pick the best size, and the image changes size across breakpoints</h2>
 
 				<p>Here we have an image which will be presented at different sizes, and so we can instruct the browser to pick the best initial picture by combining a list of possible source images, with how it will be intended to size the final image, as well as its own knowledge of the browser width and PPI.</p>
 
 				<p>The following image will be one third of the full width of the screen, or <code>33.33333vw</code>, above the <code>50em</code> breakpoint. Below that it will be <code>100%</code> width.</p>
 
-				<p>Note that as with previous examples, once the browser has grabbed a larger image, it won&rsquo;t let go, even if a smaller, closer matching image would suffice or indeed, is already cached.</p>
+				<p>Note that as with previous examples, once the browser has grabbed a larger image, it won&rsquo;t let go, even if a smaller, closer matching image would suffice or indeed, is already cached. One other thing, here the <code>sizes</code> attribute includes media queries and multiple sizes. If using a <code>&lt;source&gt;</code> element, there is a separate <code>media</code> attribute, but you can still combine this with media queries within the <code>sizes</code> attribute as well.</p>
 			</div>
 		</div>
 	</div>
@@ -35,15 +35,15 @@
 				<h3>Source:</h3>
 
 				<pre><code class="language-html">
-					&lt;img src=&quot;img-320.png&quot;
-					     srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
+					&lt;img srcset=&quot;img-1920.png <mark class="m-1">1920w</mark>,
 					             img-1280.png <mark class="m-2">1280w</mark>,
 					             img-960.png   <mark class="m-3">960w</mark>,
 					             img-640.png   <mark class="m-4">640w</mark>,
 					             img-480.png   <mark class="m-5">480w</mark>,
 					             img-320.png   <mark class="m-6">320w</mark>&quot;
 					     sizes=&quot;(min-width: 50em) <mark class="m-1">33.33333vw</mark>,
-					            <mark class="m-2">100vw</mark>&quot;&gt;
+					            <mark class="m-2">100vw</mark>&quot;
+					     src=&quot;img-320.png&quot;&gt;
 				</code></pre>
 			</div>
 		</div>
@@ -53,9 +53,9 @@
 <div class="grid  grid--center  grid--no-gutter">
 	<div class="col  col-1  col-1-3--m">
 		<p class="image">
-			<img src="img-320.png"
-			     srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
+			<img srcset="img-1920.png 1920w, img-1280.png 1280w, img-960.png 960w, img-640.png 640w, img-480.png 480w, img-320.png 320w"
 			     sizes="(min-width: 50em) 33.33333vw, 100vw"
+			     src="img-320.png"
 			     class="img-full">
 		</p>
 	</div>
@@ -84,7 +84,7 @@
 
 <script>
 WebFontConfig = {
-google: { families: [ 'Source+Sans+Pro:400,600:latin', 'Source+Code+Pro:400,700:latin' ] }
+google: { families: [ 'Titillium+Web:400,700:latin', 'Source+Code+Pro:400,700:latin' ] }
 };
 (function(){
 var wf = document.createElement('script');
