@@ -71,7 +71,22 @@
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
 				<h2 class="tile__title">Browser support</h2>
-				<p>Coming soon</p>
+
+				<dl class="browsers">
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Chrome 46</dt>
+					<dd>Buggy. If you refresh at the first source breakpoint, it gets stuck on an image source. If you trigger the second source, it picks up again. Given the srcset -w and sizes behaviour from other examples has it using the largest cached source, instead here it changes sources up and down, rather than holding on to the largest one.</dd>
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Firefox 42</dt>
+					<dd>Buggy. Especially with srcset on an &lt;img&gt; tag. Given the srcset -w and sizes behaviour from other examples has it using the largest cached source, instead here it changes sources up and down, rather than holding on to the largest one.</dd>
+					<dt><img src="../img/icon-fail.svg" alt="Fail"> Safari 9</dt>
+					<dd>No &lt;picture&gt; support.</dd>
+					<dt><img src="../img/icon-fail.svg" alt="Fail"> Edge 12</dt>
+					<dd>No &lt;picture&gt; support.</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Edge 13</dt>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Android Chrome 44</dt>
+					<dd>Appears to work, but may still have similar issues as desktop Chrome were the conditions correct.</dd>
+					<dt><img src="../img/icon-fail.svg" alt="Fail"> iOS Safari 9</dt>
+					<dd>No &lt;picture&gt; support.</dd>
+				</dl>
 			</div>
 		</div>
 	</div>

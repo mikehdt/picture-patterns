@@ -20,7 +20,7 @@
 			<div class="tile">
 				<h2 class="tile__title">Testing <code>srcset -w</code> syntax, when no <code>source</code> attribute is set</h2>
 
-				<p>By deliberately leaving off the otherwise requires <code>sources</code> attribute, we often get some weird browser behaviour. You should not leave off the <code>sources</code> attribute, this is just to provide a counterpoint as to why it is needed.</p>
+				<p>By deliberately leaving off the otherwise required <code>sources</code> attribute, we can get some weird browser behaviour. Of course you should <strong>not</strong> leave off the <code>sources</code> attribute, this is just to provide a counterpoint as to why it is needed.</p>
 
 				<p>The first image has the <code>320w</code> but is still missing <code>sizes</code>.</p>
 				<p>The second image leaves off the <code>320w</code> and is missing the <code>sizes</code> attribute.</p>
@@ -87,7 +87,22 @@
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
 				<h2 class="tile__title">Browser support</h2>
-				<p>Coming soon</p>
+
+				<dl class="browsers">
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Chrome 46</dt>
+					<dd>Buggy? Goes weird if you leave off the 320w &ndash; and make it larger. For other example, works, hangs on to larger images.</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Firefox 42</dt>
+					<dd>Doesn't replace the -x syntax images even if a downloaded-but-not-matching-x-density source exists (this may be desired behaviour?).</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Safari 9</dt>
+					<dd>Doesn't replace the -x syntax images even if a downloaded-but-not-matching-x-density source exists (this may be desired behaviour?).</dd>
+					<dt><img src="../img/icon-fail.svg" alt="Fail"> Edge 12</dt>
+					<dd>No -w syntax support. -x image works as intended.</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Edge 13</dt>
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Android Chrome 44</dt>
+					<dd>Works generally, however the existence of the -x syntax image here sometimes causes it to select incorrect sources.</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> iOS Safari 9</dt>
+					<dd>Desktop Safari issues were not observed on iOS.</dd>
+				</dl>
 			</div>
 		</div>
 	</div>

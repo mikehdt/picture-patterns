@@ -66,7 +66,20 @@
 		<div class="col  col-1  col-3-4--m  col-2-3--l">
 			<div class="tile">
 				<h2 class="tile__title">Browser support</h2>
-				<p>Coming soon</p>
+
+				<dl class="browsers">
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Chrome 46</dt>
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Firefox 42</dt>
+					<dd>Works, with inconsistent behaviour. Uses the 320px source for the first image, even if a larger source is downloaded. Otherwise, grabs one size and never lets go, even if a bigger size is available. Doesn't replace the -x syntax images even if a downloaded-but-not-matching-x-density source exists.</dd>
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> Safari 9</dt>
+					<dd>Works, with inconsistent behaviour. Uses the 320px source for the first image, even if a larger source is downloaded. Otherwise, grabs one size and never lets go, even if a bigger size is available. Doesn't replace the -x syntax images even if a downloaded-but-not-matching-x-density source exists.</dd>
+					<dt><img src="../img/icon-fail.svg" alt="Fail"> Edge 12</dt>
+					<dd>No -w syntax support. -x image works as intended.</dd>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Edge 13</dt>
+					<dt><img src="../img/icon-pass.svg" alt="Pass"> Android Chrome 44</dt>
+					<dt><img src="../img/icon-warning.svg" alt="Warning"> iOS Safari 9</dt>
+					<dd>Works, with inconsistent behaviour. Uses the 320px source for the first image, even if a larger source is downloaded. Otherwise, grabs one size and never lets go, even if a bigger size is available. Doesn't replace the -x syntax images even if a downloaded-but-not-matching-x-density source exists.</dd>
+				</dl>
 			</div>
 		</div>
 	</div>
