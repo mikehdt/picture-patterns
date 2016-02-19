@@ -82,6 +82,10 @@ a {
 		background-color: $link__color;
 		color: white;
 	}
+
+	li & {
+		vertical-align: top;
+	}
 }
 
 strong {
