@@ -30,6 +30,8 @@
 
 				<p>Using the <code>-w</code> syntax and <code>&lt;source&gt;</code> tags is really complicated in this scenario by the fixed width sidebar which must be calcuated for, along with the gutters. Ironically, the simplest caching method (grab a large size, hold on to it) ends up with this mathematically complex source for selecting the right initial size to load.</p>
 
+				<p>The extra source stuff on the square image tag itself is more to handle a fallback in case the actual <code>&lt;picture>&gt;</code> tag was unsupported but <code>-w</code> syntax was.</p>
+
 				<p><strong>Important note:</strong> Any <code>em</code> or <code>rem</code> units used in the <code>&lt;source&gt;</code> are calculated before any other CSS has loaded, so assume <code>1rem = 16px</code>. This is why the sidebar is <code>17.5em</code> wide and not <code>28rem</code> even though this page uses a multiplier to make <code>1rem = 10px</code>.</p>
 			</div>
 		</div>
@@ -78,9 +80,10 @@
 					         srcset=&quot;img-sq-l.jpg <mark class="m-1">448w</mark>,
 					                 img-sq-m.jpg <mark class="m-2">302w</mark>,
 					                 img-sq-s.jpg <mark class="m-3">180w</mark>&quot;
-					         sizes=&quot;<mark class="m-1">(min-width: 60em)</mark> <mark class="m-1">calc((100vw - (2 * 3vw) - 17.5em) / 4)</mark>,
-					                <mark class="m-2">(min-width: 40em)</mark> <mark class="m-2">50vw</mark>,
-					                <mark class="m-3">100vw</mark>&quot;&gt;
+					         sizes=&quot;<mark class="m-1">(min-width: 80em)</mark> <mark class="m-1">calc((100vw - (5 * 3vw) - 17.5em) / 4)</mark>,
+					                <mark class="m-2">(min-width: 60em)</mark> <mark class="m-2">calc((100vw - (3 * 3vw) - 17.5em) / 2)</mark>,
+					                <mark class="m-3">(min-width: 40em)</mark> <mark class="m-3">calc((100vw - (5 * 3vw)) / 4)</mark>,
+					                <mark class="m-4">calc((100vw - (3 * 3vw)) / 2)</mark>&quot;&gt;
 					&lt;/picture&gt;
 				</code></pre>
 			</div>
@@ -143,9 +146,10 @@
 						     srcset="img-sq-l.jpg 448w,
 						             img-sq-m.jpg 302w,
 						             img-sq-s.jpg 180w"
-						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
-						            (min-width: 40em) 50vw,
-						            100vw"
+						     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						            (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						            (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						            calc((100vw - (3 * 3vw)) / 2)"
 						     class="img-full">
 					</picture>
 					<p class="complex-picture-title">Title</p>
@@ -167,9 +171,10 @@
 						     srcset="img-sq-l.jpg 448w,
 						             img-sq-m.jpg 302w,
 						             img-sq-s.jpg 180w"
-						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
-						            (min-width: 40em) 50vw,
-						            100vw"
+						     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						            (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						            (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						            calc((100vw - (3 * 3vw)) / 2)"
 						     class="img-full">
 					</picture>
 					<p class="complex-picture-title">Title</p>
@@ -191,9 +196,10 @@
 						     srcset="img-sq-l.jpg 448w,
 						             img-sq-m.jpg 302w,
 						             img-sq-s.jpg 180w"
-						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
-						            (min-width: 40em) 50vw,
-						            100vw"
+						     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						            (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						            (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						            calc((100vw - (3 * 3vw)) / 2)"
 						     class="img-full">
 					</picture>
 					<p class="complex-picture-title">Title</p>
@@ -215,9 +221,10 @@
 						     srcset="img-sq-l.jpg 448w,
 						             img-sq-m.jpg 302w,
 						             img-sq-s.jpg 180w"
-						     sizes="(min-width: 60em) calc((100 - (2 * 3vw) - 17.5em) / 4),
-						            (min-width: 40em) 50vw,
-						            100vw"
+						     sizes="(min-width: 80em) calc((100vw - (5 * 3vw) - 17.5em) / 4),
+						            (min-width: 60em) calc((100vw - (3 * 3vw) - 17.5em) / 2),
+						            (min-width: 40em) calc((100vw - (5 * 3vw)) / 4),
+						            calc((100vw - (3 * 3vw)) / 2)"
 						     class="img-full">
 					</picture>
 					<p class="complex-picture-title">Title</p>
